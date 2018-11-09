@@ -25,6 +25,7 @@ library(here) # For making the script run without a wd
 library(magrittr) # For piping the logo
 library(png)
 library(xlsx)
+library(openxlsx)
 
 # Fetching the data via API ----
 tabela = get_sidra(api='/t/1419/p/201201-201810/v/63/C315/7169/n7/3501')
@@ -51,4 +52,4 @@ ggplot(ipca, aes(x=time, y=ipca))+
 
 # Exporting to Excel ----
 
-write.xlsx(ipca, "c:/mydata.xlsx")
+writexl::write_xlsx(ipca, path = "my.data.xls")
