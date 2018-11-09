@@ -24,6 +24,7 @@ library(magick)
 library(here) # For making the script run without a wd
 library(magrittr) # For piping the logo
 library(png)
+library(xlsx)
 
 # Fetching the data via API ----
 tabela = get_sidra(api='/t/1419/p/201201-201810/v/63/C315/7169/n7/3501')
@@ -47,3 +48,7 @@ ggplot(ipca, aes(x=time, y=ipca))+
   labs(title='IPCA Variação Mensal',
        subtitle='Índice Geral para a Região Metropolitana de São Paulo',
        caption='Fonte: AS Partners Finance & Tech Solutions (IBGE.)')
+
+# Exporting to Excel ----
+
+write.xlsx(ipca, "c:/mydata.xlsx")
