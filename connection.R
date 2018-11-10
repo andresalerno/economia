@@ -33,7 +33,6 @@ dbSendQuery(con, "USE researchdb")
 # Reconnecting to database we just created using following command in R ----
 
 con <- dbConnect(MySQL(), host = "127.0.0.1", port = 3306, user = "root", password = "Sucesso2018!", dbname = "researchdb")
-
 # Creating table ----
 
 dbSendQuery(con, "
@@ -62,6 +61,13 @@ for (i in 1:10) {
 }
 
 # Show table using R ----
+
+query <- "SELECT * FROM sensordevice"
+rs <- dbSendQuery(con, query)
+data <- dbFetch(rs)
+print(data)
+print(data[3,])
+print(data[,2])
 
 dbListTables(con)
 dbHasCompleted(con)
